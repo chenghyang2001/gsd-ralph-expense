@@ -3,7 +3,7 @@
 ## Priority 1：Walking Skeleton（失敗測試 + add + list）
 
 - [x] Task 1（TDD RED）：寫「會失敗」的 test_expense.py — 用 pytest `tmp_path` 隔離，`from expense import add_expense, load_expenses`；happy path：`add_expense(db, 120, "食物")` 回傳 id==1、amount==120、category=="食物"，再 `load_expenses(db)` 應含該筆。此時 expense.py 尚無實作 → 必須紅燈（D-01/D-06/D-08）
-- [ ] Task 2（轉綠）：實作 expense.py — load_expenses/save_expenses（path 參數；不存在回 []；json.dump indent=2 ensure_ascii=False，D-13）、add_expense（id=max+1，D-01/D-02）、list_expenses；argparse 子命令 add/list（add 取兩位置參數 金額、分類；D-14）；CLI 路徑 = 環境變數 EXPENSE_DB 優先否則 `Path(__file__).resolve().parent/"expenses.json"`（D-07）；list 格式 `[{id}] {amount} {category}`，空清單不印、exit 0（D-10）。Task 1 轉綠
+- [x] Task 2（轉綠）：實作 expense.py — load_expenses/save_expenses（path 參數；不存在回 []；json.dump indent=2 ensure_ascii=False，D-13）、add_expense（id=max+1，D-01/D-02）、list_expenses；argparse 子命令 add/list（add 取兩位置參數 金額、分類；D-14）；CLI 路徑 = 環境變數 EXPENSE_DB 優先否則 `Path(__file__).resolve().parent/"expenses.json"`（D-07）；list 格式 `[{id}] {amount} {category}`，空清單不印、exit 0（D-10）。Task 1 轉綠
 
 ## Priority 2：補完（total + rm + 驗證 + 邊界）
 
