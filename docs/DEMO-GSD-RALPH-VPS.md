@@ -64,6 +64,7 @@ Loop #4  偵測 fix_plan 全勾 + pytest 綠 → graceful exit: plan_complete
 3. **token 隨 scope 線性成長、不失控**：todo（11 test）12.6k → expense（24 test）22.6k，多一個聚合 + 更嚴驗證約翻倍，仍 4 loop 一次收斂，無 scope creep。
 4. **一次性設置能攤提**：VPS 上 ralph/pytest/auth 是耐久的，第二個專案起省掉整個 install 半段——長命 VPS 當 Ralph 執行器的規模效益。
 5. 沿用前作踩坑：`ANTHROPIC_API_KEY` 未設走 Max、`ALLOWED_TOOLS` 要含 `Bash(python3 *)/Bash(pytest *)`、detached 用 tmux 不用 `ssh 'cmd &'`、`.md`/config 用本機 Write+scp 避 heredoc 引號地獄。
+6. **跨平台編碼發現（done-gate 的隱藏假設）**：Ralph 在 VPS（Linux）24/24 全綠，但同一份碼在 Windows 本機 3 個 CLI 測試炸——`expense.py` 用 `print()` 輸出中文走**系統預設編碼**（Linux=UTF-8 過 / Windows=cp950，`食物` 的 `0xad` 是 Big5 碼），subprocess 測試以 UTF-8 解碼子程序輸出 → `UnicodeDecodeError`。**不是 Ralph 缺陷**（done-gate 只定義在 VPS，GSD PLAN 未要求跨平台），但正是「編碼防禦」的活教材：`print`/subprocess 不可依賴系統預設編碼（修法 `sys.stdout.reconfigure(encoding="utf-8")` 或測試端帶 `encoding="utf-8"`+`PYTHONUTF8=1`）。**教訓：done-gate 綠 = 在「執行環境」綠，不等於跨平台綠——自主執行的驗收判準要把目標平台講死。**
 
 ## 4. 怎麼重現（精簡）
 
