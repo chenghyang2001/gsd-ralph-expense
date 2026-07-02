@@ -7,7 +7,7 @@
 
 ## Priority 2：補完（total + rm + 驗證 + 邊界）
 
-- [ ] Task 3（全綠）：補 compute_totals（保序 dict 累加，同分類合併、大小寫敏感，D-03/D-05；回傳 (保序 dict, 合計)）與 remove_expense（id 不存在 raise ValueError，VAL-03）；add_expense 加驗證（金額非正整數 / 分類 strip 後空 → raise ValueError，VAL-01/02/D-15）；main 補 total / rm 子命令（rm 取一 id，D-14），以 try/except ValueError 包核心呼叫 → 捕獲印繁中訊息到 stderr + return 1（D-09/D-12）；total 印每分類 `{分類} {加總}` 再 `合計 {總和}`，空清單只印 `合計 0`（D-04/D-11）。補齊 test_expense.py 涵蓋四指令正常路徑 + 邊界（空清單 list/total、rm 無效 id、add 非法金額、add 空分類、rm 後 add 的 id 仍 max+1）。`python3 -m pytest test_expense.py -q` 全綠
+- [x] Task 3（全綠）：補 compute_totals（保序 dict 累加，同分類合併、大小寫敏感，D-03/D-05；回傳 (保序 dict, 合計)）與 remove_expense（id 不存在 raise ValueError，VAL-03）；add_expense 加驗證（金額非正整數 / 分類 strip 後空 → raise ValueError，VAL-01/02/D-15）；main 補 total / rm 子命令（rm 取一 id，D-14），以 try/except ValueError 包核心呼叫 → 捕獲印繁中訊息到 stderr + return 1（D-09/D-12）；total 印每分類 `{分類} {加總}` 再 `合計 {總和}`，空清單只印 `合計 0`（D-04/D-11）。補齊 test_expense.py 涵蓋四指令正常路徑 + 邊界（空清單 list/total、rm 無效 id、add 非法金額、add 空分類、rm 後 add 的 id 仍 max+1）。`python3 -m pytest test_expense.py -q` 全綠
 
 ## 硬約束（不可違反）
 
