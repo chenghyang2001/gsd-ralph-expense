@@ -28,14 +28,14 @@
   3. 支出以 `{id, amount, category}` 結構存入 `expenses.json`；檔案不存在時視為空清單、程式不崩潰
   4. 非正整數金額、空分類、無效 rm id 皆被拒絕並印錯誤訊息、exit code 1
   5. `pytest test_expense.py` 涵蓋四指令正常路徑與邊界（空清單、無效 id、非法金額）且全綠
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
 
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md — 交付 expense.py + test_expense.py：四指令、JSON 持久化、驗證，pytest 全綠（walking-skeleton 垂直切片）
 
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Expense CLI | 0/TBD | Not started | - |
+| 1. Expense CLI | 0/1 | Not started | - |
